@@ -1,0 +1,41 @@
+.App {
+  text-align: center;
+}
+.App-header {
+  background-image: url("images/nasa_bg.jpg");
+  opacity: 85%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: calc(10px + 2vmin);
+  color: yellow;
+}
+
+.page-heading {
+  font-size: 2.8rem;
+}
+
+.potd-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: auto;
+  width: 1025px;
+  padding: 15px;
+  margin: 15px 0 100px 0;
+  background-image: linear-gradient(to bottom, #1d1d1ffa 55%, #1a4b94fd);
+  border-radius: 5px;
+  box-shadow: 1px 3px 1px 1px black;
+}
+.potd-container h4 {
+  font-size: 1.9rem;
+  color: rgb(164, 229, 238);
+  text-decoration: underline;
+}
+.potd-container img {
+  max-width: 475px;
+  opacity: 100%;
+}
