@@ -1,11 +1,16 @@
 import React from "react";
 import DatePicker from "react-date-picker";
+import "../assets/App.css";
 
 const PickDate = (props) => {
   return (
-    <>
-      <DatePicker value={props.date} onChange={props.setDate} />
-    </>
+    <DatePicker
+      className="calendar"
+      closeOnScroll={true}
+      value={props.date}
+      selected={props.date}
+      onChange={props.setDate}
+    />
   );
 };
 

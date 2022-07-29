@@ -1,8 +1,12 @@
 .App {
   text-align: center;
 }
-.App-header {
+
+.app-header {
   background-image: url("images/nasa_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   opacity: 85%;
   min-height: 100vh;
   display: flex;
@@ -13,8 +17,31 @@
   color: yellow;
 }
 
+.app-header-top {
+  background-image: url("images/nasa_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 85%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: calc(10px + 2vmin);
+  color: yellow;
+}
+
+.divider {
+  width: 65%;
+  border-bottom: 2px solid black;
+  margin-bottom: 10px;
+}
+
 .page-heading {
+  height: 75px;
   font-size: 2.8rem;
+  text-decoration: underline;
 }
 
 .potd-container {
@@ -30,15 +57,47 @@
   border-radius: 5px;
   box-shadow: 1px 3px 1px 1px black;
 }
+
+.potd-cont-no-gradient {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: auto;
+  width: 750px;
+  padding: 15px;
+  /* margin: 15px 0 100px 0; */
+  background-image: linear-gradient(to bottom, #1d1d1ffa 55%, #1a4b94fd);
+  border-radius: 5px;
+  box-shadow: 1px 3px 1px 1px black;
+}
+
 .potd-container h4 {
   font-size: 1.9rem;
   color: rgb(164, 229, 238);
   text-decoration: underline;
 }
+
 .potd-container img {
   max-width: 475px;
   opacity: 100%;
 }
+
 .disclaimer {
   font-size: 1rem;
+}
+
+.no-rec-cont {
+  display: flex;
+  margin: 20px;
+  padding: 25px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  background-color: #371357;
+}
+
+.no-records {
+  /* width: 80%; */
+  font-size: 2rem;
 }

@@ -1,31 +1,26 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import PotD from "./components/PotD.js";
+import DatePicker from "react-datepicker";
+import * as util from "./util/util";
 import "./assets/App.css";
-import PickDate from "./components/PickDate.js";
+import "react-datepicker/dist/react-datepicker.css";
 
 function App() {
   const [nasaData, setNasaData] = useState({});
   const [date, setDate] = useState(new Date());
+  const [noRecords, setNoRecords] = useState(false);
 
-  const convertDate = (date) => {
-    if (date === null) {
-      return new Date();
-    }
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-    // console.log(day, month, year);
-    const output = `${year}-${month < 10 ? "0" + month : month}-${
-      day < 10 ? "0" + day : day
-    }`;
-    console.log("output", output, typeof output);
-    return output;
-  };
+  // console.log(Date());
 
-  const dateChoice = convertDate(date);
+  const dateChoice = util.convertDate(date);
 
-  console.log("dateChoice", dateChoice);
+  useEffect(() => {
+    setNoRecords(util.dateCompareTwo(date, "06/20/1995"));
+  }, [date]);
+
+  // console.log("dateChoice", dateChoice, typeof dateChoice);
+  // console.log("noRecords: ", noRecords);
   useEffect(() => {
     axios
       .get(
@@ -42,25 +37,41 @@ function App() {
 
   return (
     <div className="App">
-      <div className="App-header">
-        <div>
-          <p className="page-heading">
+      <div className={noRecords ? "app-header-top" : "app-header"}>
+        <div className="page-heading">
+          <span>
             NASA Photo of the Day!{" "}
             <span role="img" aria-label="go!">
               🚀
             </span>
-          </p>
+          </span>
         </div>
-        <div className="potd-container">
-          <PickDate date={date} setDate={setDate} />
-          <p className="disclaimer">
-            * there are no records prior to 06/20/1995
-          </p>
-          <PotD
-            photd={nasaData.url}
-            title={nasaData.title}
-            explanation={nasaData.explanation}
+        <div className="divider">{""}</div>
+        <div className={noRecords ? "potd-cont-no-gradient" : "potd-container"}>
+          <DatePicker
+            className="calendar"
+            closeOnScroll={true}
+            selected={date}
+            onChange={(date) => setDate(date)}
+            popperPlacement="bottom"
           />
+          {noRecords ? null : (
+            <p className="disclaimer">
+              {" "}
+              *there are no records prior to 06/20/1995
+            </p>
+          )}
+          {noRecords ? (
+            <div className="no-rec-cont">
+              <p className="no-records">There are no records available.</p>
+            </div>
+          ) : (
+            <PotD
+              photd={nasaData.url}
+              title={nasaData.title}
+              explanation={nasaData.explanation}
+            />
+          )}
         </div>
       </div>
     </div>
