@@ -39,9 +39,9 @@
 }
 
 .page-heading {
+  margin: 25px 0;
   height: 75px;
   font-size: 2.8rem;
-  text-decoration: underline;
 }
 
 .potd-container {
@@ -90,7 +90,7 @@
 .no-rec-cont {
   display: flex;
   margin: 20px;
-  padding: 25px;
+  padding: 0 25px;
   justify-content: center;
   align-items: center;
   border: 1px solid white;
