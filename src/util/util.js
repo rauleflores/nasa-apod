@@ -1,13 +1,13 @@
 function convertDate(date) {
   let output;
 
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
-
   if (date === null) {
-    output = new Date();
+    return;
   } else {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
     output = `${year}-${month < 10 ? "0" + month : month}-${
       day < 10 ? "0" + day : day
     }`;
@@ -34,8 +34,4 @@ function dateCompareTwo(date1, date2) {
   return output;
 }
 
-function handleNullDate(date) {
-  return;
-}
-
-export { convertDate, dateCompareTwo, handleNullDate };
+export { convertDate, dateCompareTwo };
